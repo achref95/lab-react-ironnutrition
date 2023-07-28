@@ -36,18 +36,20 @@ function App() {
   return (
     <div className="App">
       <div>
-      <Search handleSearch={handleSearch} />
-      {foodsList.map((food) => {
-        return (
-          <div className="main" key={food.id}>
-            <FoodBox food={food} deleteFood={deleteFood} />
-          </div>
-        )
-      })}
-      <AddFoodForm addNewFood={addNewFood} />
+        <AddFoodForm addNewFood={addNewFood} />
+        <Search handleSearch={handleSearch} />
+        {foodsList.length === 0 ? (
+          <p>Oops, there's no more content to show</p>
+        ) : (
+          foodsList.map((food) => (
+            <div className="main" key={food.id}>
+              <FoodBox food={food} deleteFood={deleteFood} />
+            </div>
+          ))
+        )}
       </div>
     </div>
-  );
+  )
   }
 
 export default App;
