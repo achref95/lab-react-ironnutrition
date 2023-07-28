@@ -18,10 +18,14 @@ function App() {
   }
 
   const handleSearch = (searchList) => {
-    const filteredProducts = [...foods].filter((food) =>
-      food.name.toLowerCase().includes(searchList.toLowerCase())
-    )
-    setFoodslist(filteredProducts)
+    if (searchList === "") {
+      setFoodslist(foods)
+    } else {
+      const filteredFoods = [...foods].filter((food) =>
+        food.name.toLowerCase().includes(searchList.toLowerCase())
+      );
+      setFoodslist(filteredFoods);
+    }
   }
 
   const deleteFood = (id) => {
